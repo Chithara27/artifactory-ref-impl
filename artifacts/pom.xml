@@ -215,7 +215,7 @@
 					<type>jar</type>
 				</artifactItem>
 <!-- artifactItem section for biosdk-client -->				
-				<artifactItem>
+	<!--			<artifactItem>
 					<groupId>io.mosip.biosdk</groupId>
 					<artifactId>biosdk-client</artifactId>
 					<version>${biosdk-client.version}</version>
@@ -223,7 +223,7 @@
 					<destFileName>${biosdk-client.fileName}</destFileName>
 					<classifier>jar-with-dependencies</classifier>
 					<type>jar</type>
-				</artifactItem>
+				</artifactItem> -->
 <!-- artifactItem section for demosdk client -->
                			<artifactItem>
 					<groupId>io.mosip.demosdk</groupId>

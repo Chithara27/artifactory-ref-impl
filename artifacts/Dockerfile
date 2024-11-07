@@ -115,6 +115,8 @@ RUN mkdir -p ${biosdk_client_zip_path}/biosdk-client ${demosdk_zip_path}/demosdk
 
 COPY /src/sdk/biosdk/install.sh ${biosdk_client_zip_path}/biosdk-client/
 
+COPY /src/sdk/biosdk/biosdk-client* ${biosdk_client_zip_path}/biosdk-client/
+
 COPY /src/sdk/demosdk/install.sh ${demosdk_zip_path}/demosdk/
 
 COPY /src/deployment/docker/id-authentication/* ${ida_sh_path}/
