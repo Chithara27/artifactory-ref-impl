@@ -13,15 +13,16 @@ ARG container_user_uid=1001
 ARG container_user_gid=1001
 
 # install packages and create user
-RUN apt-get -y update &&\
-apt-get install -y --no-install-recommends unzip wget zip tree openjdk-11-jdk &&\
-groupadd -g ${container_user_gid} ${container_user_group} &&\
-rm -rf /var/lib/apt/lists/* &&\
-wget https://dlcdn.apache.org/maven/maven-3/3.8.9/binaries/apache-maven-3.8.9-bin.tar.gz &&\
-tar -xzf apache-maven-3.8.9-bin.tar.gz && mv apache-maven-3.8.9 /usr/local/maven && rm apache-maven-3.8.9-bin.tar.gz &&\
-useradd -u ${container_user_uid} -g ${container_user_group} -s /bin/sh -m ${container_user} \
-&& mkdir -p /var/run/nginx /var/tmp/nginx \
-&& chown -R ${container_user}:${container_user} /usr/share/nginx /var/run/nginx /var/tmp/nginx
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends gnupg2 unzip wget zip ca-certificates && \
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /usr/lib/jvm && ln -s /opt/java/openjdk /usr/lib/jvm/java-11-openjdk-amd64 && \
+    groupadd -g ${container_user_gid} ${container_user_group} && \
+    wget -q https://archive.apache.org/dist/maven/maven-3/3.8.9/binaries/apache-maven-3.8.9-bin.tar.gz && \
+    tar -xzf apache-maven-3.8.9-bin.tar.gz && mv apache-maven-3.8.9 /usr/local/maven && rm apache-maven-3.8.9-bin.tar.gz && \
+    useradd -u ${container_user_uid} -g ${container_user_group} -s /bin/sh -m ${container_user} && \
+    mkdir -p /var/run/nginx /var/tmp/nginx && \
+    chown -R ${container_user}:${container_user} /usr/share/nginx /var/run/nginx /var/tmp/nginx
 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 
