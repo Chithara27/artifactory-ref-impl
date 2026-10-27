@@ -105,11 +105,11 @@
 		<mock-sdk.version>1.2.0.2</mock-sdk.version>
 		<mock-sdk.location>/usr/share/nginx/html/artifactory/libs-release-local/mock-sdk/1.1.5</mock-sdk.location>
 		<mock-sdk.fileName>mock-sdk.jar</mock-sdk.fileName>
-		<!-- mock-sdk-jpeg-extractor -->
+		<!-- mock-sdk-jpeg-extractor
 		<mock-sdk-jpeg-extractor.version>1.2.0.1-SNAPSHOT</mock-sdk-jpeg-extractor.version>
 		<mock-sdk-jpeg-extractor.location>/usr/share/nginx/html/artifactory/libs-release-local/jpeg-mock-sdk/1.1.5</mock-sdk-jpeg-extractor.location>
 		<mock-sdk-jpeg-extractor-lib.location>/usr/share/nginx/html/artifactory/libs-release-local/jpeg-sdk/jpeg-sdk-lib</mock-sdk-jpeg-extractor-lib.location>
-		<mock-sdk-jpeg-extractor.fileName>mock-sdk-jpeg-extractor-jar-with-dependencies.jar</mock-sdk-jpeg-extractor.fileName>
+		<mock-sdk-jpeg-extractor.fileName>mock-sdk-jpeg-extractor-jar-with-dependencies.jar</mock-sdk-jpeg-extractor.fileName -->
 		<!-- hazelcast cast -->
 		<hazelcast.version>3.12.12</hazelcast.version>
 		<hazelcast.location>/usr/share/nginx/html/artifactory/libs-release-local/cache</hazelcast.location>
@@ -237,7 +237,7 @@
 					<classifier>jar-with-dependencies</classifier>
 					<type>jar</type>
                 		</artifactItem>
-<!-- artifactItem section for mock-sdk-jpeg-extractor -->
+<!-- artifactItem section for mock-sdk-jpeg-extractor
 				<artifactItem>
 					<groupId>io.mosip.mock.sdk</groupId>
 					<artifactId>mock-sdk-jpeg-extractor</artifactId>
@@ -246,8 +246,8 @@
 					<destFileName>${mock-sdk-jpeg-extractor.fileName}</destFileName>
 					<classifier>jar-with-dependencies</classifier>
 					<type>jar</type>
-				</artifactItem>
-<!-- artifactItem section for mock-sdk-jpeg-extractor lib-->
+				</artifactItem -->
+<!-- artifactItem section for mock-sdk-jpeg-extractor lib
 				<artifactItem>
 					<groupId>io.mosip.mock.sdk</groupId>
 					<artifactId>mock-sdk</artifactId>
@@ -264,7 +264,7 @@
 					<destFileName>${mock-sdk-jpeg-extractor.fileName}</destFileName>
 					<classifier>jar-with-dependencies</classifier>
 					<type>jar</type>
-				</artifactItem>
+				</artifactItem -->
 <!-- artifactItem section for biosdk library -->
 <!-- Commented as per discussion. as jar with dependencies will have components of jar as well.
 				<artifactItem>
