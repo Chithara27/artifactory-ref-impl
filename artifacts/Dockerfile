@@ -119,7 +119,7 @@ ENV version=1.2.1-SNAPSHOT
 ENV idp_auth_wrapper_version=0.0.1-SNAPSHOT
 
 # Create all the jar, i18n & theme paths.
-RUN mkdir -p ${biosdk_client_zip_path}/biosdk-client ${demosdk_zip_path}/demosdk ${biosdk_lib_zip_path}/biosdk-lib ${cache_path} ${ida_sh_path} ${hsm_client_path} ${mosip_plugins_zip_path} ${kernel_jar_path} ${test_jar_path} ${idobject_jar_path} ${regproc_jar_path} ${sdk_path} ${image_compressor_path}/image-compressor ${icu4j_jar_path} ${clamav_path} ${i18n_zip_path} ${theme_zip_path} ${child_auth_filter_jar_path} ${base_path}/libs-release-local/reg-client ${scripts_path} ${master_template_path} ${idp_auth_wrapper_lib_zip_path} ${esignet_wrapper_lib_zip_path}/esignet-wrapper ${custom_zip_path}/ ${nprime_biosdk_lib_path}/windows-sdk
+RUN mkdir -p ${biosdk_client_zip_path}/biosdk-client ${demosdk_zip_path}/demosdk ${biosdk_lib_zip_path}/biosdk-lib ${cache_path} ${ida_sh_path} ${hsm_client_path} ${mosip_plugins_zip_path} ${kernel_jar_path} ${test_jar_path} ${idobject_jar_path} ${regproc_jar_path} ${sdk_path} ${image_compressor_path}/image-compressor ${icu4j_jar_path} ${clamav_path} ${i18n_zip_path} ${theme_zip_path} ${child_auth_filter_jar_path} ${base_path}/libs-release-local/reg-client ${scripts_path} ${master_template_path} ${idp_auth_wrapper_lib_zip_path} ${esignet_wrapper_lib_zip_path}/esignet-wrapper ${custom_zip_path}/
 
 
 # Copy all the respective jars to the location
@@ -172,6 +172,11 @@ COPY ./configure.sh ${work_dir}/
 
 COPY pom.xml ${work_dir}/
 
+#NprimeWindowsSDK
+ENV nprime_biosdk_lib_path=${base_path}/libs-release-local/nprime/
+RUN mkdir -p ${nprime_biosdk_lib_path}/windows-sdk
+COPY src/sdk/nprime-sdk/sdkDependency.zip ${nprime_biosdk_lib_path}/windows-sdk/
+
 RUN cd ${work_dir} && mvn dependency:resolve && mvn clean install
 
 RUN bash configure.sh
@@ -185,5 +190,3 @@ EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]
 
-ENV nprime_biosdk_lib_path=${base_path}/libs-release-local/nprime/
-COPY src/sdk/nprime-sdk/sdkDependency.zip ${nprime_biosdk_lib_path}/windows-sdk/
